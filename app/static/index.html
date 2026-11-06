@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Silknet Chatbot</title>
+<link rel="icon" href="/favicon.ico" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+  <div class="grain"></div>
+</div>
+
+<!-- Boot splash -->
+<div id="splash" class="splash"><div class="orb orb-lg pulse"></div></div>
+
+<!-- Auth -->
+<main id="auth" class="auth" hidden>
+  <div class="auth-card glass float">
+    <div class="brand">
+      <div class="orb"></div>
+      <div>
+        <h1>Silknet</h1>
+        <p class="muted">Your assistant, powered by Claude Haiku</p>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-mode="login" role="tab">Sign in</button>
+      <button class="tab" data-mode="signup" role="tab">Create account</button>
+      <span class="tab-ink"></span>
+    </div>
+
+    <form id="auth-form" novalidate>
+      <label class="field">
+        <span>Email</span>
+        <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+        <small id="pw-hint" class="muted" hidden>At least 8 characters</small>
+      </label>
+      <p id="auth-error" class="form-error" role="alert"></p>
+      <button id="auth-submit" class="btn primary wide" type="submit">
+        <span class="label">Sign in</span><span class="spinner"></span>
+      </button>
+    </form>
+  </div>
+</main>
+
+<!-- App -->
+<div id="app" class="app" hidden>
+  <aside id="sidebar" class="sidebar glass">
+    <div class="brand small">
+      <div class="orb"></div>
+      <h2>Silknet</h2>
+      <button id="close-sidebar" class="icon-btn only-mobile" aria-label="Close menu">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <button id="new-chat" class="btn primary wide">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> New chat
+    </button>
+    <nav id="conv-list" class="conv-list" aria-label="Chats"></nav>
+    <div class="user-box">
+      <div class="avatar" id="avatar"></div>
+      <span id="user-email" class="ellipsis"></span>
+      <button id="logout" class="icon-btn" title="Sign out" aria-label="Sign out">
+        <svg viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"/></svg>
+      </button>
+    </div>
+  </aside>
+  <div id="scrim" class="scrim"></div>
+
+  <section class="chat glass">
+    <header class="chat-head">
+      <button id="open-sidebar" class="icon-btn only-mobile" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <h3 id="chat-title" class="ellipsis">New chat</h3>
+      <span id="model-badge" class="badge">Haiku 4.5</span>
+    </header>
+
+    <div id="log" class="log" aria-live="polite"></div>
+
+    <form id="composer" class="composer glass">
+      <textarea id="input" rows="1" placeholder="Message Silknet…" maxlength="8000"></textarea>
+      <button id="send" class="send" type="submit" aria-label="Send" disabled>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <p class="fine-print muted">Long chats are automatically compacted into a summary to keep things fast.</p>
+  </section>
+</div>
+
+<div id="toasts" class="toasts" aria-live="assertive"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
